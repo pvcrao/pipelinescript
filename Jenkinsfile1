@@ -1,0 +1,24 @@
+pipeline {
+    agent { albel 'labelselelctor'}
+    stages {
+        stage('git') {
+            steps {
+                git credentialsId: 'new',
+                branch: 'main',
+                url: https://github.com/pvcrao/jenkins-repo.git
+        stage('mavenbuild') {
+            step {
+                sh """
+                mvn clean package
+                java -jar terget/spring-petclinic-3.2.0-SNAPSHOT.jar
+                """
+
+
+            }
+
+        }        
+            }
+        }
+    }
+}
+spring-petclinic-3.2.0-SNAPSHOT.jar
